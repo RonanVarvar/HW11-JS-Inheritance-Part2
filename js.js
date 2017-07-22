@@ -16,40 +16,40 @@ Clock.prototype.getTime = function () {
     if (this.sec < 10) this.sec = '0' + this.sec;
 };
 
-Clock.prototype.setClock = function () {
+Clock.prototype.formatClock = function () {
     this.getTime();
     this.elem.innerHTML = this.hours + ':' + this.min + ':' + this.sec;
 };
 
 Clock.prototype.start = function () {
-    setInterval(this.setClock.bind(this), 1000);
+    setInterval(this.formatClock.bind(this), 1000);
 };
 
-function Shortclock(elem, color) {
+function ShortClock(elem, color) {
     Clock.apply(this, arguments);
 }
 
-Shortclock.prototype = Object.create(Clock.prototype);
-Shortclock.prototype.constructor = Shortclock;
+ShortClock.prototype = Object.create(Clock.prototype);
+ShortClock.prototype.constructor = ShortClock;
 
-Shortclock.prototype.setClock = function () {
+ShortClock.prototype.formatClock = function () {
     this.getTime();
     this.elem.innerHTML = this.hours + ':' + this.min;
 };
 
-var greenClock = new Shortclock('clock1', 'green');
+var greenClock = new ShortClock('clock1', 'green');
 
 greenClock.start();
 
-function Fullclock(elem, color, size) {
+function FullClock(elem, color, size) {
     Clock.apply(this, arguments);
 
     this.elem.style.fontSize = size;
 }
 
-Fullclock.prototype = Object.create(Clock.prototype);
-Fullclock.prototype.constructor = Fullclock;
+FullClock.prototype = Object.create(Clock.prototype);
+FullClock.prototype.constructor = FullClock;
 
-var blueClock = new Fullclock('clock2', 'blue', '24px');
+var blueClock = new FullClock('clock2', 'blue', '24px');
 
 blueClock.start();
