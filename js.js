@@ -18,6 +18,7 @@ Clock.prototype.getTime = function () {
 
 Clock.prototype.formatClock = function () {
     this.getTime();
+
     this.elem.innerHTML = this.hours + ':' + this.min + ':' + this.sec;
 };
 
@@ -34,6 +35,7 @@ ShortClock.prototype.constructor = ShortClock;
 
 ShortClock.prototype.formatClock = function () {
     this.getTime();
+
     this.elem.innerHTML = this.hours + ':' + this.min;
 };
 
